@@ -1,0 +1,30 @@
+---
+title: "De Yerba Buena al mundo"
+author: "Lucila Pinto"
+output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+##En la clase 8, que vi grabada porque ese día no tenía internet, el Tucu hizo un ejemplo de mapas interactivos con Yerba Buena, Tucumán. Mandé una foto de la pantalla a mi familia, porque también vivimos en Yerba Buena cuando yo era muy chica.
+
+```{r cars}
+library(tidyverse)
+library(polAr)
+library(ggplot2)
+
+map_tuc <- get_geo("TUCUMAN")
+
+library(leaflet)
+
+leaflet(map_tuc) %>%
+  addPolygons() %>%
+  addProviderTiles(providers$Stamen.Toner) %>%
+  addMarkers(lng = -65.276472, -26.819889)
+
+```
