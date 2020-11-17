@@ -1,6 +1,7 @@
 ---
-title: "De Yerba Buena al mundo"
-author: "Lucila Pinto"
+title: "Esto podría haber sido un link de Google Maps"
+subtitle: "Pero tenía ganas de probar Leaflet"
+author: "por Lucila Pinto"
 output:
   prettydoc::html_pretty:
     theme: architect
@@ -11,16 +12,33 @@ output:
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
-##En la clase 8, que vi grabada porque ese día no tenía internet, el Tucu hizo un ejemplo de mapas interactivos con Yerba Buena, Tucumán. Mandé una foto de la pantalla a mi familia, porque también vivimos en Yerba Buena cuando yo era muy chica.
-
-```{r cars}
+```{r librerías, include=FALSE}
 library(tidyverse)
 library(polAr)
 library(ggplot2)
+library(leaflet)
+library(knitr)
+
+```
+
+
+###En la clase 8, que vi grabada porque ese día no tenía internet, el Tucu hizo un ejemplo de mapas interactivos con Yerba Buena, Tucumán. Mandé una foto de la pantalla a mi familia, porque vivimos en Yerba Buena hasta 1994.
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("fotos/captura1.png")
+```
+
+###Yo era muy chica para acordarme dónde vivía, pero mi hermano identificó la casa en la capturanque mandé. Y mi madre confirmó.
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("fotos/captura2.png")
+```
+
+###Y con esos datos reproduje el gráfico del Tucu y marqué la casa con leaflet.
+
+```{r mapa}
 
 map_tuc <- get_geo("TUCUMAN")
-
-library(leaflet)
 
 leaflet(map_tuc) %>%
   addPolygons() %>%
